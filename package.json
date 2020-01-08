@@ -1,0 +1,32 @@
+{
+  "name": "lab03-async",
+  "version": "1.0.0",
+  "description": "Async",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nataliealway-401-advanced-javascript/lab03-async.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nataliealway-401-advanced-javascript/lab03-async/issues"
+  },
+  "homepage": "https://github.com/nataliealway-401-advanced-javascript/lab03-async#readme",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "jest": "^24.9.0",
+    "jsdocs": "^1.0.0",
+    "lint": "^0.7.0"
+  }
+}
