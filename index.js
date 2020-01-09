@@ -1,44 +1,31 @@
 'use strict';
-const validator = require('./validator'); // Validates PersonRules
-const file = require('./edit-file');
-const util = require('util'); //takes async function and returns with error-first cb
 
+const fsUsingCallback = require('./lib/files-callback.js');
+const file = `${__dirname}process.argv.slice(2)[0]`;
+const useCallbacks = (cb) => {
+//define  the callback method of accesing files
+//1.read file from the command line
+//2. edit data.firstname
+//    - validate against the schema you create*
+//      3.write data into the db
+//       4.immediatly read the file again
+//         5. console.log the results
 
-//Create a schema for person.json. The rules for each property (type and required) are up to you
+fsUsingCallback.read(file, (err, data) => {
+    if(err) {console.log(err);}
+    else {
+        data.lastName = 'Callback';
+        fsUsingCallback.write(file, data, (err, results) => {
+            if(err) {console.error(err);}
+            else {
+                fsUsingCallback.read(file, (err, afterData) => {
+                    cb(afterData);
+                })
+            }
+        })
+    }
+})
 
-//Need to promisify
-//read the file .....   util.promisify(file)
-//save it to..?         util.promisify(save)
-//
-
-const personRules = {
-  fields: {
-    firstName: {
-      type: 'string',
-      required: true,
-    },
-    lastName: {
-      type: 'string',
-    },
-    hair: {
-      type: 'string',
-      color: 'string',
-      required: true,
-    },
-    favoriteFoods: {
-      type: 'string',
-      required: false,
-    },
-    married: {
-      type: 'boolean',
-      required: false,
-    },
-    kids: {
-      type: 'number',
-      required: false,
-    },
-  },
 };
 
-// test data and save it?
-
+useCallbacks((data) => console.log(data))
