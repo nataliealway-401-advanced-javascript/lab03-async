@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = exports = {};
-
 exports.readFile = (file, cb) => {
   if( file.match(/bad/i) ) {
     cb('Invalid File');
@@ -10,3 +9,4 @@ exports.readFile = (file, cb) => {
     cb(undefined, new Buffer('File Contents'));
   }
 };
+
