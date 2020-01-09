@@ -1,4 +1,5 @@
 'use strict';
+const validator = require('./validator'); // Validates PersonRules
 const file = require('./edit-file');
 const util = require('util'); //takes async function and returns with error-first cb
 
@@ -6,8 +7,9 @@ const util = require('util'); //takes async function and returns with error-firs
 //Create a schema for person.json. The rules for each property (type and required) are up to you
 
 //Need to promisify
-//read the file
-//save it to..?
+//read the file .....   util.promisify(file)
+//save it to..?         util.promisify(save)
+//
 
 const personRules = {
   fields: {
@@ -37,3 +39,6 @@ const personRules = {
     },
   },
 };
+
+// test data and save it?
+
