@@ -1,15 +1,11 @@
 'use strict';
 
 const fsUsingCallback = require('./lib/files-callback.js');
-const file = `${__dirname}process.argv.slice(2)[0]`;
+const fsUsingPromise = require('./lib/files-promise.js');
+let file = `${__dirname}/data/person.json`;
+
+
 const useCallbacks = (cb) => {
-//define  the callback method of accesing files
-//1.read file from the command line
-//2. edit data.firstname
-//    - validate against the schema you create*
-//      3.write data into the db
-//       4.immediatly read the file again
-//         5. console.log the results
 
 fsUsingCallback.read(file, (err, data) => {
     if(err) {console.log(err);}
@@ -28,4 +24,20 @@ fsUsingCallback.read(file, (err, data) => {
 
 };
 
-useCallbacks((data) => console.log(data))
+useCallbacks((data) => console.log(data));
+
+const usePromise = () => {
+
+    return fsUsingPromise.read(file)
+      .then( data => {
+        data.lastName = 'Promise';
+        return data;
+      })
+      .then( obj => fsUsingPromise.write(file, obj))
+      .then( result => fsUsingPromise.read(file))
+      .then( data => console.log(data));
+  
+  };
+  
+  usePromise();
+

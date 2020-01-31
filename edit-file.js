@@ -1,13 +1,34 @@
 'use strict';
-module.exports = exports = {};
 
-exports.readFile = (file, cb) => {
-  if(file.match(/bad/i) ) {
-    cb('Invalid File');
-  }
+const fs = require('fs');
+const validator = require('./validator/validator.js');
+
+
+const read = (file, callback) => {
+  fs.readFile(file, (err, data) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(undefined, JSON.parse(data.toString()));
+    }
+  });
 };
 
 
-//Write a node application, called edit-file.js in the root of your project that will modify a file on your computer
+const save = (data, fileName, rules, callback) => {
+  if(validator.isValid(rules, data)){
+    const buffer = Buffer.from(JSON.stringify(data));
 
-//Done?
+    fs.writeFile(fileName, buffer, err => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(undefined);
+      }
+    });
+  } else { console.log('Is invalid'); }
+};
+
+
+
+module.exports = {read, save};
