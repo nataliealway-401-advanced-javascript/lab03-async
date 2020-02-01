@@ -3,8 +3,7 @@ jest.mock('fs');
 const files = require('../lib/files-promise.js');
 
 
-
-describe('File handler module', ()=>{
+describe('Files with promises testing', ()=>{
   it('properly writes an object to a file', () =>{
     let obj = {foo:'bar'};
     return files.write('test.json', obj)

@@ -26,6 +26,7 @@ const useCallbacks = cb => {
   });
 };
  
+// useCallbacks();
 
 const usePromise = (file) => {
   return fsPromise.read(file)
@@ -42,26 +43,6 @@ const usePromise = (file) => {
     });
 };
 
-const useAsync = async () => {
-  let before = await fsPromise.read(file);
-  before.lastName = 'Async';
-  await fsPromise.write(file, before);
-  let after = await fsPromise.read(file);
-  return after;
-};
+usePromise();
  
 
-/**
- * here call all functions to run
- */
-usePromise(file)
-  .then(obj => {
-    console.log('Promise!:', obj);
-    return useAsync();
-  })
-
-  .then(obj => {
-    console.log('Async:', obj);
-    useCallbacks(obj => console.log('CB', obj));
-  })
-  .catch(err => console.error('ERR', err));
