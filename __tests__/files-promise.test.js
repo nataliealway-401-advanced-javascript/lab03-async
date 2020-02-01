@@ -2,7 +2,6 @@
 jest.mock('fs');
 const files = require('../lib/files-promise.js');
 
-
 describe('Files with promises testing', ()=>{
   it('properly writes an object to a file', () =>{
     let obj = {foo:'bar'};
@@ -13,7 +12,7 @@ describe('Files with promises testing', ()=>{
   });
 
 
-  it ('properly writes a JSON string to file', () => {
+  it ('properly writes a JSON string to a file', () => {
     let obj = {foo: 'bar'};
     let str = JSON.stringify(obj);
     files.write('test.json', str)
@@ -26,14 +25,13 @@ describe('Files with promises testing', ()=>{
       });
   });
         
-  it('fails properly, given invalid JSON', () => {
+  it('fails when given invalid JSON', () => {
     let obj = 'bad';
     let str = JSON.stringify(obj);
-    //return 
+
     files.write('bad.json', str)
       .then(failure => {
         expect(failure).toBeDefined();
-        //return 
         files.read('test.json');
       })
       .then(json => {
