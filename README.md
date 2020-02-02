@@ -10,12 +10,13 @@
 * [jsdoc](link)
 
 ### Modules
-
-
-### Setup
+* files-callbacks.js
+* files-promises.js
+* edit-file.js
 
 #### Running the app
-
+npm start
   
 
 #### UML 
+![UML](./assets/lab3UML.jpg)
