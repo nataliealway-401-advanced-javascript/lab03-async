@@ -6,7 +6,12 @@ const fsPromise = require('./lib/files-promise.js');
 
 const file = process.argv.slice(2)[0];
 
-
+/**
+ * @function Callback
+ * @param  {} file
+ * @param  {} data
+ * @returns lastname
+ */
 const useCallbacks = cb => {
   fsCallback.read(file, (err, data) => {
     if (err) {
@@ -27,7 +32,11 @@ const useCallbacks = cb => {
 };
  
 // useCallbacks();
-
+/**
+ * @function usePromise
+ * @param  {} file
+ * @returns result
+ */
 const usePromise = (file) => {
   return fsPromise.read(file)
   
