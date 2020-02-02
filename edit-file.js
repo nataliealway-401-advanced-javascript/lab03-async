@@ -5,6 +5,7 @@ const fs = require('fs');
 const readFile = require('./lib/readFile.js');
 const validator = require('./lib/validator.js');
 const schema = require('./lib/schema.js');
+const handleError = require('./lib/errorHandler.js');
 
 let argv = process.argv;
 let file = `${__dirname}/files/data/${argv[2]}`;
