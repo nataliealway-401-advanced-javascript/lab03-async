@@ -7,7 +7,7 @@
 * [travis](https://www.travis-ci.com/nataliealway-401-advanced-javascript/lab03-async)
 
 #### Documentation
-* [jsdoc](link)
+* [jsdoc](https://github.com/nataliealway-401-advanced-javascript/lab03-async/tree/workingBranch/docs)
 
 ### Modules
 * files-callbacks.js
